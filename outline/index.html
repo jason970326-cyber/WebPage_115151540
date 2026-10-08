@@ -3,475 +3,2179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="藍天咖啡，為手沖咖啡愛好者挑選當季精品咖啡豆，讓每一杯都清澈、明亮、值得細品。">
-  <title>藍天咖啡｜讓風味，慢慢抵達</title>
+  <meta name="description" content="媽你好 - 專為學生打造的高CP值購物首選！不會害你啦，嚴選好物、學生特惠、品質讚讚讚！">
+  <title>媽你好｜不會害你啦！學生專屬讚讚讚購物天堂</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #062742;
-      --blue: #0c5b95;
-      --sky: #75c6e8;
-      --mist: #eaf5f7;
-      --cream: #fbfaf6;
-      --ink: #122534;
-      --muted: #607482;
-      --line: #d7e4e8;
-      --sand: #e5b66b;
-      --shadow: 0 18px 50px rgba(6, 39, 66, .13);
+      --primary-pink: #ff4b82;
+      --primary-hover: #e0326b;
+      --secondary-pink: #ff85aa;
+      --light-pink: #fff0f5;
+      --bg-pink: #fff5f8;
+      --soft-pink: #ffe2eb;
+      --accent-yellow: #ffcf33;
+      --accent-coral: #ff6b6b;
+      --text-dark: #2a1520;
+      --text-muted: #7d6571;
+      --card-bg: #ffffff;
+      --border-pink: #ffd2e0;
+      --shadow-sm: 0 4px 12px rgba(255, 75, 130, 0.08);
+      --shadow-md: 0 10px 24px rgba(255, 75, 130, 0.14);
+      --shadow-lg: 0 18px 38px rgba(255, 75, 130, 0.22);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-pill: 9999px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      color: var(--ink);
-      background: var(--cream);
-      font-family: "Noto Sans TC", sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
+      padding: 0;
     }
 
-    a { color: inherit; text-decoration: none; }
-    button, input { font: inherit; }
-    button { cursor: pointer; }
-    .wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
-    .serif { font-family: "Noto Serif TC", serif; }
-    .eyebrow {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-pink);
+      color: var(--text-dark);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* ==================== 頂部公告跑馬燈 ==================== */
+    .top-announcement {
+      background: linear-gradient(90deg, #ff4b82, #ff759f, #ff4b82);
+      background-size: 200% auto;
+      animation: gradientSlide 6s linear infinite;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 8px 0;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    @keyframes gradientSlide {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ==================== 導覽列 Navbar ==================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--border-pink);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      width: 46px;
+      height: 46px;
+      background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(255, 75, 130, 0.35);
+      transform: rotate(-4deg);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-box:hover .logo-badge {
+      transform: rotate(6deg) scale(1.08);
+    }
+
+    .brand-title {
+      font-family: "Fredoka", "Noto Sans TC", sans-serif;
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: var(--primary-pink);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-slogan {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-pink);
+      background-color: var(--soft-pink);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-student-discount {
+      background: linear-gradient(135deg, #ffe678, #ffd233);
+      color: #5c3800;
+      font-weight: 900;
+      font-size: 0.88rem;
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 3px 10px rgba(255, 207, 51, 0.4);
+      transition: all 0.25s ease;
+    }
+
+    .btn-student-discount:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 16px rgba(255, 207, 51, 0.55);
+    }
+
+    .cart-btn {
+      position: relative;
+      background: var(--light-pink);
+      color: var(--primary-pink);
+      border: 2px solid var(--border-pink);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: all 0.25s ease;
+    }
+
+    .cart-btn:hover {
+      background: var(--primary-pink);
+      color: #fff;
+      border-color: var(--primary-pink);
+      transform: scale(1.06);
+    }
+
+    .cart-counter {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--accent-coral);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+    }
+
+    /* ==================== Hero 主視覺區 ==================== */
+    .hero {
+      position: relative;
+      padding: 70px 0 60px;
+      background: radial-gradient(circle at 80% 20%, #ffe0ec 0%, #fff5f8 70%);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 2px solid var(--border-pink);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: var(--primary-pink);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+      animation: pulseSoft 2.5s infinite;
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.18;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .hero-title .highlight {
+      color: var(--primary-pink);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title .highlight::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 6px;
+      width: 100%;
+      height: 14px;
+      background: rgba(255, 75, 130, 0.2);
+      z-index: -1;
+      border-radius: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.18rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-weight: 500;
+      max-width: 540px;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .badge-chip {
+      background: #ffffff;
+      color: var(--text-dark);
+      border: 1px solid var(--border-pink);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.86rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-pink), #ff246e);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.08rem;
+      padding: 16px 36px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 10px 24px rgba(255, 75, 130, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #ff246e, #e01258);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(255, 75, 130, 0.5);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--primary-pink);
+      border: 2px solid var(--primary-pink);
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--light-pink);
+      transform: translateY(-2px);
+    }
+
+    /* Hero 視覺右側卡片 */
+    .hero-card-visual {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 3px solid var(--border-pink);
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      text-align: center;
+      transform: rotate(1.5deg);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-card-visual:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .hero-circle-art {
+      width: 190px;
+      height: 190px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #ffe2ee, #ffd0e0);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 4px dashed var(--primary-pink);
+      box-shadow: inset 0 0 20px rgba(255, 75, 130, 0.15);
+    }
+
+    .hero-emoji-icon {
+      font-size: 5rem;
+      filter: drop-shadow(0 6px 12px rgba(255, 75, 130, 0.3));
+      animation: bounceHeart 2.2s infinite ease-in-out;
+    }
+
+    @keyframes bounceHeart {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-stat-badge {
+      position: absolute;
+      background: #ffffff;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      border: 2px solid var(--border-pink);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-top-left {
+      top: -12px;
+      left: -12px;
+      background: #fff9db;
+      border-color: #ffe066;
+    }
+
+    .badge-bottom-right {
+      bottom: -10px;
+      right: -10px;
+      background: #e7f5ff;
+      border-color: #a5d8ff;
+    }
+
+    .hero-card-text {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .hero-card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .flash-voucher-box {
+      background: linear-gradient(90deg, #fff0f5, #ffe6ee);
+      border: 2px dashed var(--primary-pink);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .voucher-code {
+      font-family: monospace;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--primary-pink);
+      letter-spacing: 0.1em;
+    }
+
+    .copy-btn {
+      background: var(--primary-pink);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+    }
+
+    .copy-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    /* ==================== 品牌規格與核心保證 (不會害你啦) ==================== */
+    .section-spec {
+      padding: 80px 0;
+      background: #ffffff;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 50px;
+    }
+
+    .section-subtag {
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: var(--primary-pink);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-heading {
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .section-lead {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .spec-card {
+      background: var(--bg-pink);
+      border: 2px solid var(--border-pink);
+      border-radius: var(--radius-md);
+      padding: 30px 22px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spec-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-pink);
+      background: #ffffff;
+    }
+
+    .spec-card-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      background: #ffffff;
+      border: 2px solid var(--border-pink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .spec-card:hover .spec-card-icon {
+      background: var(--primary-pink);
+      color: #fff;
+      border-color: var(--primary-pink);
+    }
+
+    .spec-card-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .spec-card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 規格條列小看板 */
+    .spec-summary-banner {
+      margin-top: 50px;
+      background: linear-gradient(135deg, #fff0f5, #ffe6f0);
+      border: 2px solid var(--border-pink);
+      border-radius: var(--radius-md);
+      padding: 26px 32px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+
+    .spec-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .meta-value {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--primary-pink);
+    }
+
+    /* ==================== 倒數限時促銷區 (吸引客戶消費) ==================== */
+    .section-countdown {
+      padding: 40px 0;
+      background: linear-gradient(135deg, #ff4b82, #ff759f);
+      color: #ffffff;
+      margin: 40px 0;
+    }
+
+    .countdown-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .countdown-info h3 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .countdown-info p {
+      font-size: 1rem;
+      opacity: 0.92;
+    }
+
+    .countdown-timer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .time-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: var(--radius-sm);
+      min-width: 66px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .time-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      font-family: "Fredoka", monospace;
+      line-height: 1;
+      display: block;
+    }
+
+    .time-txt {
+      font-size: 0.72rem;
+      opacity: 0.85;
+      font-weight: 700;
+    }
+
+    .countdown-btn {
+      background: var(--accent-yellow);
+      color: #4a2d00;
+      font-weight: 900;
+      font-size: 1.05rem;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .countdown-btn:hover {
+      transform: scale(1.06);
+      background: #ffdb59;
+    }
+
+    /* ==================== 熱銷商品區 (吸引客戶消費) ==================== */
+    .section-products {
+      padding: 70px 0 90px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 45px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      background: #ffffff;
+      border: 2px solid var(--border-pink);
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 0.94rem;
+      padding: 10px 24px;
+      border-radius: var(--radius-pill);
+      transition: all 0.25s ease;
+    }
+
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: var(--primary-pink);
+      color: #ffffff;
+      border-color: var(--primary-pink);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-pink);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-pink);
+    }
+
+    .product-badge-flag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--primary-pink);
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(255, 75, 130, 0.3);
+    }
+
+    .product-img-box {
+      height: 210px;
+      background: linear-gradient(135deg, #fff2f6, #ffe3ec);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-emoji {
+      font-size: 5.5rem;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 6px 12px rgba(255, 75, 130, 0.15));
+    }
+
+    .product-card:hover .product-emoji {
+      transform: scale(1.15) rotate(4deg);
+    }
+
+    .product-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--primary-pink);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .product-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    .product-meta-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-pink);
+    }
+
+    .price-group {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .origin-price {
+      font-size: 0.86rem;
+      color: #aaa;
+      text-decoration: line-through;
+    }
+
+    .current-price {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary-pink);
+    }
+
+    .sales-count {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .btn-add-cart {
+      width: 100%;
+      background: linear-gradient(135deg, var(--light-pink), var(--soft-pink));
+      color: var(--primary-pink);
+      border: 2px solid var(--border-pink);
+      font-weight: 900;
+      font-size: 0.96rem;
+      padding: 12px;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-add-cart:hover {
+      background: var(--primary-pink);
+      color: #ffffff;
+      border-color: var(--primary-pink);
+      box-shadow: 0 6px 16px rgba(255, 75, 130, 0.35);
+    }
+
+    /* ==================== 學生認證領券專區 ==================== */
+    .section-coupon-banner {
+      padding: 60px 0;
+      background: #ffffff;
+      border-top: 2px solid var(--border-pink);
+      border-bottom: 2px solid var(--border-pink);
+    }
+
+    .coupon-card {
+      background: linear-gradient(135deg, #fff5f8, #ffeaf1);
+      border: 3px dashed var(--primary-pink);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .coupon-text h3 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .coupon-text p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .coupon-form {
+      display: flex;
+      gap: 12px;
+      background: #ffffff;
+      padding: 6px;
+      border-radius: var(--radius-pill);
+      border: 2px solid var(--border-pink);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .coupon-form input {
+      flex-grow: 1;
+      border: none;
+      outline: none;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .coupon-form button {
+      background: var(--primary-pink);
+      color: #ffffff;
+      font-weight: 900;
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .coupon-form button:hover {
+      background: var(--primary-hover);
+    }
+
+    .coupon-side-box {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      border: 2px solid var(--border-pink);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .coupon-side-box .big-percent {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--primary-pink);
+      line-height: 1;
+      font-family: "Fredoka", sans-serif;
+    }
+
+    /* ==================== 品牌風格讚讚讚 學生評價牆 ==================== */
+    .section-testimonials {
+      padding: 80px 0;
+      background: var(--bg-pink);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .review-card {
+      background: #ffffff;
+      border: 2px solid var(--border-pink);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-pink);
+    }
+
+    .stars-row {
+      color: #ffb703;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 3px;
+    }
+
+    .review-comment {
+      font-size: 0.98rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px dashed var(--border-pink);
+      padding-top: 14px;
+    }
+
+    .reviewer-avatar {
+      width: 44px;
+      height: 44px;
+      background: var(--soft-pink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      border: 2px solid var(--primary-pink);
+    }
+
+    .reviewer-name {
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .reviewer-school {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ==================== 常見問題 FAQ ==================== */
+    .section-faq {
+      padding: 70px 0;
+      background: #ffffff;
+    }
+
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border: 2px solid var(--border-pink);
+      border-radius: var(--radius-md);
+      background: var(--bg-pink);
+      overflow: hidden;
+      transition: border-color 0.25s ease;
+    }
+
+    .faq-item.active {
+      border-color: var(--primary-pink);
+      background: #ffffff;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      background: transparent;
+      text-align: left;
+    }
+
+    .faq-icon {
+      font-size: 1.3rem;
+      color: var(--primary-pink);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* ==================== 頁尾 Footer ==================== */
+    .footer {
+      background: #25121b;
+      color: #ffffff;
+      padding: 60px 0 30px;
+      position: relative;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand h4 {
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.8rem;
+      color: var(--secondary-pink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-brand p {
+      color: #d6b8c5;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 360px;
+    }
+
+    .footer-col h5 {
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 16px;
+      font-weight: 800;
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .footer-col h5::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 28px;
+      height: 3px;
+      background: var(--primary-pink);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #d6b8c5;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #a38995;
+    }
+
+    /* ==================== 購物車彈窗 Modal / Drawer ==================== */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-overlay.open {
+      display: block;
+      opacity: 1;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(440px, 100%);
+      background: #ffffff;
+      z-index: 2001;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 20px 24px;
+      border-bottom: 2px solid var(--border-pink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-header h3 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .close-drawer-btn {
+      background: var(--light-pink);
+      color: var(--primary-pink);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .drawer-body {
+      padding: 20px 24px;
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .empty-cart-state {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-cart-state .empty-icon {
+      font-size: 4rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .cart-item-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-pink);
+      border: 1px solid var(--border-pink);
+    }
+
+    .cart-item-thumb {
+      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .cart-item-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .cart-item-price {
+      font-size: 0.88rem;
+      color: var(--primary-pink);
+      font-weight: 700;
+    }
+
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      background: #fff;
+      border: 1px solid var(--border-pink);
+      border-radius: 6px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .qty-number {
+      font-size: 0.9rem;
+      font-weight: 800;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    .drawer-footer {
+      padding: 20px 24px;
+      border-top: 2px solid var(--border-pink);
+      background: #ffffff;
+    }
+
+    .cart-total-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+
+    .cart-total-price {
+      color: var(--primary-pink);
+      font-size: 1.4rem;
+    }
+
+    .btn-checkout {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary-pink), #ff246e);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.05rem;
+      padding: 15px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 8px 20px rgba(255, 75, 130, 0.4);
+    }
+
+    .btn-checkout:hover {
+      background: linear-gradient(135deg, #ff246e, #e01258);
+      transform: translateY(-2px);
+    }
+
+    /* ==================== 浮動通知 Toast ==================== */
+    .toast-notice {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(37, 18, 27, 0.95);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      font-size: 0.96rem;
+      font-weight: 800;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+      z-index: 3000;
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 0 0 13px;
-      color: var(--blue);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
-    }
-    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-    .section-title {
-      margin: 0;
-      font: 700 clamp(30px, 4vw, 46px)/1.28 "Noto Serif TC", serif;
-      letter-spacing: .035em;
-    }
-    .section-title em { color: var(--blue); font-style: normal; }
-    .section-copy { max-width: 48ch; margin: 20px 0 0; color: var(--muted); }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      min-height: 50px;
-      padding: 12px 23px;
-      border: 1px solid transparent;
-      border-radius: 2px;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button:focus-visible, a:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
-    .button-primary { color: var(--navy); background: var(--sand); box-shadow: 0 9px 22px rgba(1, 35, 59, .2); }
-    .button-primary:hover { background: #f0c77f; }
-    .button-outline { color: #fff; border-color: rgba(255,255,255,.58); }
-    .button-outline:hover { background: rgba(255,255,255,.1); }
-    .arrow { font-size: 18px; line-height: 1; }
-
-    /* Header */
-    .site-header {
-      position: absolute;
-      z-index: 10;
-      width: 100%;
-      color: #fff;
-      border-bottom: 1px solid rgba(255, 255, 255, .16);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 78px; }
-    .brand { display: flex; align-items: center; gap: 12px; font: 700 20px/1 "Noto Serif TC", serif; letter-spacing: .11em; }
-    .brand-mark {
-      display: grid;
-      width: 29px;
-      height: 29px;
-      place-items: center;
-      border: 1px solid var(--sky);
-      border-radius: 50%;
-      color: var(--sky);
-      font: 700 19px/1 "Playfair Display", serif;
-    }
-    .brand small { display: block; margin-top: 5px; color: rgba(255,255,255,.64); font: 600 8px/1 sans-serif; letter-spacing: .21em; }
-    .nav-links { display: flex; align-items: center; gap: 29px; font-size: 13px; font-weight: 500; }
-    .nav-links a { position: relative; padding: 6px 0; }
-    .nav-links a:not(.nav-cta)::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: var(--sky); transform: scaleX(0); transform-origin: right; transition: transform .22s; }
-    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
-    .nav-cta { padding: 8px 16px !important; border: 1px solid rgba(255,255,255,.55); }
-    .nav-cta:hover { color: var(--navy); background: #fff; }
-    .menu-toggle { display: none; border: 0; color: #fff; background: transparent; }
-
-    /* Hero */
-    .hero { position: relative; min-height: 704px; overflow: hidden; color: #fff; background: var(--navy); }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: .36;
-      background: radial-gradient(circle at 76% 45%, rgba(55, 167, 212, .75), transparent 23%), linear-gradient(117deg, rgba(4,25,45,.22) 0 48%, rgba(5,47,78,.82) 78%);
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: -180px;
-      width: 760px;
-      height: 760px;
-      border: 1px solid rgba(153,220,240,.22);
-      border-radius: 50%;
-      box-shadow: 0 0 0 62px rgba(153,220,240,.045), 0 0 0 180px rgba(153,220,240,.025);
-    }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: 45px; align-items: center; min-height: 704px; padding: 122px 0 72px; }
-    .hero .eyebrow { color: var(--sky); }
-    .hero-title { max-width: 13ch; margin: 0; font: 900 clamp(42px, 5.5vw, 68px)/1.22 "Noto Serif TC", serif; letter-spacing: .075em; }
-    .hero-title .blue { color: var(--sky); }
-    .hero-lede { max-width: 42ch; margin: 26px 0 32px; color: rgba(255,255,255,.78); font-size: 16px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
-    .hero-note { margin-top: 28px; color: rgba(255,255,255,.52); font-size: 11px; letter-spacing: .1em; }
-    .hero-art { position: relative; min-height: 453px; }
-    .sun { position: absolute; top: 2%; right: 14%; width: 166px; height: 166px; border-radius: 50%; background: #93d6e6; box-shadow: 0 0 65px rgba(145,215,233,.36); }
-    .mountain { position: absolute; right: -4%; bottom: 2%; width: 98%; height: 70%; clip-path: polygon(0 73%, 23% 42%, 37% 59%, 61% 10%, 73% 29%, 84% 0, 100% 37%, 100% 100%, 0 100%); background: linear-gradient(135deg, #0b7eac, #06446f 70%); opacity: .85; }
-    .mountain::after { content: ""; position: absolute; inset: 0; background: linear-gradient(155deg, transparent 38%, rgba(2,35,58,.72) 38.5% 100%); }
-    .coffee-vessel { position: absolute; z-index: 2; right: 17%; bottom: 0; width: 255px; filter: drop-shadow(0 22px 21px rgba(0,0,0,.23)); }
-    .dripper { position: relative; width: 205px; height: 132px; margin: 0 auto -5px; border: 4px solid #e9f8fa; border-top-width: 6px; border-radius: 10px 10px 44% 44%; background: linear-gradient(115deg, rgba(123,206,225,.5), rgba(26,118,161,.23)); clip-path: polygon(0 0,100% 0,78% 100%,22% 100%); }
-    .dripper::after { content: ""; position: absolute; inset: 18px 16px 0; border-top: 1px solid rgba(255,255,255,.6); border-left: 1px solid rgba(255,255,255,.25); transform: skewX(-17deg); }
-    .carafe { position: relative; width: 170px; height: 181px; margin: 0 auto; border: 4px solid #e9f8fa; border-radius: 9px 9px 39% 39% / 9px 9px 19% 19%; background: linear-gradient(90deg, rgba(110,211,229,.26), rgba(1,52,87,.52)); }
-    .carafe::before { content: ""; position: absolute; top: -16px; left: 27px; width: 108px; height: 20px; border: 4px solid #e9f8fa; border-bottom: 0; border-radius: 50% 50% 0 0; }
-    .carafe::after { content: ""; position: absolute; right: 16px; bottom: 24px; left: 16px; height: 60px; border-radius: 3px 3px 26px 26px; background: linear-gradient(90deg, rgba(133,67,26,.84), rgba(76,33,9,.92)); }
-    .art-label { position: absolute; z-index: 3; top: 50%; right: 2%; width: 114px; padding-left: 12px; border-left: 1px solid var(--sky); color: rgba(255,255,255,.78); font-size: 10px; line-height: 1.7; letter-spacing: .1em; }
-    .art-label strong { display: block; color: var(--sky); font: 600 20px/1 "Playfair Display", serif; }
-    .scroll-line { position: absolute; bottom: 23px; left: max(24px, calc((100% - 1120px) / 2)); z-index: 2; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.56); font-size: 10px; letter-spacing: .15em; }
-    .scroll-line::before { content: ""; width: 38px; height: 1px; background: currentColor; }
-
-    /* Intro */
-    .intro { padding: 118px 0; background: #fff; }
-    .intro-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(45px, 8vw, 105px); align-items: center; }
-    .intro-stamp { position: relative; min-height: 355px; }
-    .stamp-circle { position: absolute; inset: 13px auto auto 0; display: grid; width: 290px; height: 290px; place-items: center; border: 1px solid #9dd7e7; border-radius: 50%; color: var(--blue); text-align: center; }
-    .stamp-circle::before { content: ""; position: absolute; inset: 14px; border: 1px dashed #a5d9e6; border-radius: 50%; }
-    .stamp-circle strong { display: block; font: 700 43px/1 "Playfair Display", serif; letter-spacing: -.04em; }
-    .stamp-circle span { display: block; margin-top: 8px; font-size: 11px; font-weight: 700; letter-spacing: .14em; }
-    .stamp-card { position: absolute; right: 0; bottom: 0; width: 216px; padding: 21px 23px; color: #fff; background: var(--blue); box-shadow: var(--shadow); }
-    .stamp-card p { margin: 0; font-size: 12px; line-height: 1.8; }
-    .stamp-card b { display: block; margin-bottom: 8px; color: var(--sky); font: 600 12px/1 "Playfair Display", serif; letter-spacing: .14em; }
-    .intro .section-copy { font-size: 16px; }
-    .intro-link { display: inline-flex; gap: 10px; margin-top: 28px; padding-bottom: 4px; border-bottom: 1px solid var(--blue); color: var(--blue); font-size: 14px; font-weight: 700; }
-
-    /* Coffees */
-    .coffee-section { padding: 110px 0 120px; background: var(--mist); }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 43px; }
-    .section-head .section-copy { max-width: 35ch; margin: 0; font-size: 14px; }
-    .coffee-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; }
-    .coffee-card { position: relative; min-height: 384px; overflow: hidden; color: #fff; background: var(--navy); box-shadow: var(--shadow); }
-    .coffee-card::before { content: ""; position: absolute; right: -63px; bottom: -87px; width: 238px; height: 238px; border: 1px solid rgba(255,255,255,.29); border-radius: 50%; }
-    .coffee-card::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(160deg, transparent 42%, rgba(0,0,0,.28)); pointer-events: none; }
-    .coffee-card:nth-child(2) { background: #106396; }
-    .coffee-card:nth-child(3) { background: #164c68; }
-    .coffee-content { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 384px; padding: 29px; }
-    .coffee-number { color: var(--sky); font: 600 13px/1 "Playfair Display", serif; letter-spacing: .08em; }
-    .coffee-origin { margin: auto 0 7px; color: rgba(255,255,255,.63); font-size: 11px; font-weight: 600; letter-spacing: .14em; }
-    .coffee-card h3 { margin: 0; font: 700 27px/1.35 "Noto Serif TC", serif; letter-spacing: .05em; }
-    .coffee-notes { margin: 11px 0 22px; color: rgba(255,255,255,.75); font-size: 13px; }
-    .coffee-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.25); }
-    .price { font-size: 14px; font-weight: 700; }
-    .add-button { padding: 5px 0; border: 0; color: #fff; background: none; font-size: 12px; font-weight: 700; letter-spacing: .07em; }
-    .add-button:hover { color: var(--sand); }
-
-    /* Brew process */
-    .brew { overflow: hidden; padding: 118px 0; background: #fff; }
-    .brew-grid { display: grid; grid-template-columns: .93fr 1.07fr; gap: clamp(44px, 9vw, 112px); align-items: center; }
-    .brew-visual { position: relative; min-height: 396px; border: 1px solid var(--line); background: linear-gradient(140deg, #f4fafb 0 50%, #e5f4f7 50%); }
-    .brew-visual::before { content: ""; position: absolute; top: 35px; left: 34px; width: 70px; height: 1px; background: var(--blue); box-shadow: 0 9px 0 var(--blue), 0 18px 0 var(--blue); }
-    .pour-ring { position: absolute; top: 71px; right: 48px; width: 240px; height: 240px; border: 35px solid rgba(12,91,149,.13); border-radius: 50%; }
-    .pour-ring::after { content: ""; position: absolute; top: 45px; left: 45px; width: 80px; height: 80px; border: 3px solid var(--blue); border-radius: 50%; }
-    .brew-v60 { position: absolute; bottom: 35px; left: 51%; width: 178px; height: 150px; border: 4px solid var(--blue); background: rgba(255,255,255,.54); clip-path: polygon(0 0,100% 0,73% 100%,27% 100%); transform: translateX(-50%); }
-    .brew-v60::before { content: ""; position: absolute; top: 14px; right: 16px; bottom: 0; left: 16px; border-left: 1px solid #8dcce0; border-right: 1px solid #8dcce0; transform: skewX(-11deg); }
-    .brew-caption { position: absolute; right: 25px; bottom: 21px; color: var(--blue); font: 600 10px/1.4 "Playfair Display", serif; letter-spacing: .13em; text-align: right; }
-    .brew-steps { display: grid; gap: 0; margin: 28px 0 0; padding: 0; list-style: none; }
-    .brew-steps li { display: grid; grid-template-columns: 43px 1fr; gap: 15px; padding: 17px 0; border-top: 1px solid var(--line); }
-    .brew-steps li:last-child { border-bottom: 1px solid var(--line); }
-    .step-no { color: var(--blue); font: 600 15px/1.7 "Playfair Display", serif; }
-    .step-copy b { display: block; font-size: 15px; }
-    .step-copy span { color: var(--muted); font-size: 13px; }
-
-    /* CTA and Footer */
-    .visit { position: relative; overflow: hidden; padding: 96px 0; color: #fff; background: var(--navy); text-align: center; }
-    .visit::before, .visit::after { content: ""; position: absolute; width: 370px; height: 370px; border: 1px solid rgba(117,198,232,.21); border-radius: 50%; }
-    .visit::before { top: -225px; left: -90px; }
-    .visit::after { right: -125px; bottom: -235px; }
-    .visit .wrap { position: relative; z-index: 1; }
-    .visit .eyebrow { justify-content: center; color: var(--sky); }
-    .visit .section-title { font-size: clamp(30px, 4vw, 45px); }
-    .visit p:not(.eyebrow) { max-width: 48ch; margin: 19px auto 28px; color: rgba(255,255,255,.73); }
-    .subscribe { display: flex; max-width: 500px; margin: 0 auto; border: 1px solid rgba(255,255,255,.5); }
-    .subscribe input { min-width: 0; flex: 1; padding: 13px 17px; border: 0; outline: none; color: #fff; background: transparent; }
-    .subscribe input::placeholder { color: rgba(255,255,255,.55); }
-    .subscribe button { padding: 0 22px; border: 0; color: var(--navy); background: var(--sand); font-size: 13px; font-weight: 700; white-space: nowrap; }
-    .subscribe button:hover { background: #f0c77f; }
-    footer { color: rgba(255,255,255,.67); background: #031c31; }
-    .footer-top { display: grid; grid-template-columns: 1.7fr 1fr 1fr; gap: 40px; padding: 58px 0 38px; }
-    .footer-brand { color: #fff; }
-    .footer-brand p { max-width: 31ch; margin: 16px 0 0; font-size: 13px; }
-    .footer-heading { margin: 0 0 15px; color: var(--sky); font-size: 11px; font-weight: 700; letter-spacing: .14em; }
-    .footer-list { margin: 0; padding: 0; list-style: none; font-size: 13px; }
-    .footer-list li + li { margin-top: 8px; }
-    .footer-list a:hover { color: #fff; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 24px; padding: 17px 0; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.43); font-size: 11px; letter-spacing: .05em; }
-
-    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 20; max-width: min(330px, calc(100% - 44px)); padding: 13px 18px; border-left: 3px solid var(--sand); color: #fff; background: var(--navy); box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .25s, transform .25s; font-size: 13px; }
-    .toast.show { opacity: 1; transform: translateY(0); }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 820px) {
-      .nav { min-height: 68px; }
-      .menu-toggle { display: block; width: 42px; height: 42px; font-size: 23px; }
-      .nav-links { position: absolute; top: 68px; right: 0; left: 0; display: grid; gap: 0; max-height: 0; overflow: hidden; background: #05233c; transition: max-height .27s ease; }
-      .nav-links.open { max-height: 300px; border-top: 1px solid rgba(255,255,255,.12); }
-      .nav-links a { padding: 13px 24px; border-bottom: 1px solid rgba(255,255,255,.09); }
-      .nav-links .nav-cta { margin: 11px 24px; text-align: center; }
-      .hero, .hero-grid { min-height: 710px; }
-      .hero-grid { grid-template-columns: 1fr; padding-top: 115px; }
-      .hero-art { min-height: 278px; margin-top: -35px; }
-      .sun { right: 14%; width: 114px; height: 114px; }
-      .mountain { width: 82%; height: 92%; }
-      .coffee-vessel { right: 15%; transform: scale(.72); transform-origin: bottom right; }
-      .art-label { top: 44%; right: 1%; }
-      .intro-grid, .brew-grid { grid-template-columns: 1fr; }
-      .intro-stamp { max-width: 510px; width: 100%; }
-      .coffee-grid { grid-template-columns: 1fr 1fr; }
-      .coffee-card:last-child { grid-column: span 2; }
-      .footer-top { grid-template-columns: 1.4fr 1fr; }
-      .footer-brand { grid-column: span 2; }
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid var(--primary-pink);
     }
 
-    @media (max-width: 560px) {
-      .wrap { width: min(100% - 34px, 1120px); }
-      .hero, .hero-grid { min-height: 680px; }
-      .hero-grid { padding-top: 100px; padding-bottom: 48px; }
-      .hero-title { font-size: 40px; }
-      .hero-lede { margin: 18px 0 23px; font-size: 14px; }
-      .hero-art { min-height: 240px; }
-      .art-label { display: none; }
-      .scroll-line { bottom: 12px; left: 17px; }
-      .intro, .coffee-section, .brew { padding: 76px 0; }
-      .stamp-circle { width: 245px; height: 245px; }
-      .stamp-card { width: 185px; padding: 16px; }
-      .section-head { display: block; }
-      .section-head .section-copy { margin-top: 15px; }
-      .coffee-grid { grid-template-columns: 1fr; }
-      .coffee-card, .coffee-card:last-child { grid-column: auto; min-height: 330px; }
-      .coffee-content { min-height: 330px; }
-      .brew-visual { min-height: 310px; }
-      .pour-ring { top: 48px; right: 25px; width: 190px; height: 190px; border-width: 27px; }
-      .visit { padding: 76px 0; }
-      .subscribe { display: block; border: 0; }
-      .subscribe input { width: 100%; border: 1px solid rgba(255,255,255,.5); }
-      .subscribe button { width: 100%; min-height: 48px; margin-top: 9px; }
-      .footer-top { grid-template-columns: 1fr; gap: 30px; }
-      .footer-brand { grid-column: auto; }
-      .footer-bottom { display: block; }
-      .footer-bottom span + span { display: block; margin-top: 6px; }
+    .toast-notice.show {
+      transform: translateX(-50%) translateY(0);
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+    /* ==================== 響應式斷點 RWD ==================== */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-subtitle {
+        margin: 0 auto 30px;
+      }
+      .hero-features {
+        justify-content: center;
+      }
+      .hero-cta-group {
+        justify-content: center;
+      }
+      .spec-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .spec-summary-banner {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .coupon-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .coupon-form {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+      .spec-grid {
+        grid-template-columns: 1fr;
+      }
+      .spec-summary-banner {
+        grid-template-columns: 1fr 1fr;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .countdown-flex {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="site-header" id="top">
-    <nav class="nav wrap" aria-label="主要導覽">
-      <a class="brand" href="#top" aria-label="回到藍天咖啡首頁">
-        <span class="brand-mark">B</span>
-        <span>藍天咖啡<small>BLUE SKY COFFEE</small></span>
+
+  <!-- 跑馬燈促銷訊息 -->
+  <div class="top-announcement">
+    📢 【開學特惠】學生出示證件享 88 折！全館滿 $399 免運直送宿舍！不會害你啦，讚讚讚！👍👍👍
+  </div>
+
+  <!-- 頂部導覽列 Navbar -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo-box">
+        <div class="logo-badge">媽</div>
+        <div>
+          <div class="brand-title">媽你好</div>
+          <div class="brand-slogan">不會害你啦｜學生省錢首選</div>
+        </div>
       </a>
-      <button class="menu-toggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="navLinks">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#story">我們的堅持</a>
-        <a href="#coffee">本季選豆</a>
-        <a href="#brew">沖煮日常</a>
-        <a class="nav-cta" href="#visit">訂閱風味通信</a>
+
+      <ul class="nav-links">
+        <li><a href="#guarantee">🛡️ 不會害你</a></li>
+        <li><a href="#products">🔥 學生熱銷</a></li>
+        <li><a href="#coupon">🎁 領學生券</a></li>
+        <li><a href="#reviews">👍 讚讚評價</a></li>
+        <li><a href="#faq">❓ 常見問題</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#coupon" class="btn-student-discount">🎓 學生專屬福利</a>
+        <button class="cart-btn" id="openCartBtn" title="查看購物車">
+          🛒
+          <span class="cart-counter" id="cartCount">0</span>
+        </button>
       </div>
-    </nav>
+    </div>
+  </nav>
+
+  <!-- 首屏主視覺區 Hero -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span>💖 2026 全台大學生熱烈推薦</span>
+          <span>•</span>
+          <span>媽媽審核超放心</span>
+        </div>
+        <h1 class="hero-title">
+          媽你好！<br>
+          <span class="highlight">真的不會害你啦～</span>
+        </h1>
+        <p class="hero-subtitle">
+          為學生量身打造的粉紅省錢基地！精選宿舍神物、期末熬夜補給與生活酷物，價格甜到心坎裡、品質讚讚讚，買給自己或寄回家媽媽都拍手！
+        </p>
+        <div class="hero-features">
+          <div class="badge-chip">🌸 滿滿粉色活力風格</div>
+          <div class="badge-chip">👍 評價全五星讚讚讚</div>
+          <div class="badge-chip">🎓 憑學生證再折 88 折</div>
+          <div class="badge-chip">📦 宿舍超商免運直送</div>
+        </div>
+        <div class="hero-cta-group">
+          <a href="#products" class="btn-primary">
+            <span>🔥 立即搶購學生激推榜</span>
+            <span>👉</span>
+          </a>
+          <a href="#guarantee" class="btn-secondary">
+            <span>🛡️ 看媽媽安心保證</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero 右側卡片 -->
+      <div class="hero-card-visual">
+        <div class="hero-stat-badge badge-top-left">
+          <span>👍</span>
+          <span>滿意度 99.8% 讚讚讚</span>
+        </div>
+        <div class="hero-stat-badge badge-bottom-right">
+          <span>👩</span>
+          <span>100% 媽媽審核嚴格過關</span>
+        </div>
+        <div class="hero-circle-art">
+          <div class="hero-emoji-icon">💖</div>
+        </div>
+        <div class="hero-card-text">「媽！我這次真的沒亂花錢！」</div>
+        <div class="hero-card-desc">花得比平常省，買得比平常好，月底不再吃土</div>
+        <div class="flash-voucher-box">
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">開學限定折扣碼</div>
+            <div class="voucher-code" id="heroCode">STUDENT88</div>
+          </div>
+          <button class="copy-btn" onclick="copyVoucher('STUDENT88')">一鍵複製</button>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero-grid wrap">
-        <div class="reveal">
-          <p class="eyebrow">HAND BREWED · SLOWLY ROASTED</p>
-          <h1 class="hero-title" id="heroTitle">讓風味，<br>在<span class="blue">藍天</span>下<br>慢慢抵達。</h1>
-          <p class="hero-lede">藍天咖啡為喜歡手沖的你，挑選值得細品的單一產區咖啡豆。從第一縷花香，到最後一口回甘，每一杯都有自己的晴朗天氣。</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#coffee">探索本季風味 <span class="arrow">→</span></a>
-            <a class="button button-outline" href="#story">認識藍天</a>
-          </div>
-          <p class="hero-note">TAIPEI · TAIWAN · EST. 2018</p>
+  <!-- 網站規格與核心保證 (不會害你啦) -->
+  <section class="section-spec" id="guarantee">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtag">BRAND MISSION & GUARANTEE</span>
+        <h2 class="section-heading">為什麼叫做「媽你好」？<br>因為我們「不會害你啦」！</h2>
+        <p class="section-lead">專為全台各大專院校學生打造的消費平台，每一件商品都經過嚴選，幫你的錢包省好省滿。</p>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-card">
+          <div class="spec-card-icon">👛</div>
+          <h3 class="spec-card-title">學生錢包守護者</h3>
+          <p class="spec-card-desc">打破校園周邊高物價！直接與原廠爭取學生特惠批發價，月底也能吃得好、用得好。</p>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="sun"></div>
-          <div class="mountain"></div>
-          <div class="coffee-vessel"><div class="dripper"></div><div class="carafe"></div></div>
-          <p class="art-label"><strong>92°C</strong>理想水溫<br>細細喚醒香氣</p>
+
+        <div class="spec-card">
+          <div class="spec-card-icon">👩‍🏫</div>
+          <h3 class="spec-card-title">媽媽審核超安心</h3>
+          <p class="spec-card-desc">通過「媽媽挑剔委員會」高規格檢驗，杜絕粗製濫造與劣質雜牌，真的不會害你啦！</p>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-card-icon">👍</div>
+          <h3 class="spec-card-title">風格讚讚讚</h3>
+          <p class="spec-card-desc">全站粉紅元氣滿點！從包裝、開箱到實用體驗，每一步都讓你忍不住大喊「讚讚讚」！</p>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-card-icon">🚀</div>
+          <h3 class="spec-card-title">宿舍秒速直送</h3>
+          <p class="spec-card-desc">開學季免搬大箱子！全台大學超商、宿舍傳達室直達到貨，開箱即用不費力。</p>
         </div>
       </div>
-      <p class="scroll-line">SCROLL TO DISCOVER</p>
-    </section>
 
-    <section class="intro" id="story" aria-labelledby="storyTitle">
-      <div class="intro-grid wrap">
-        <div class="intro-stamp reveal" aria-hidden="true">
-          <div class="stamp-circle"><div><strong>慢一點，<br>更清楚。</strong><span>LET THE FLAVOUR SPEAK</span></div></div>
-          <div class="stamp-card"><b>BLUE SKY NOTE</b><p>一杯好咖啡，從來不是匆忙完成的事。</p></div>
+      <!-- 規格對應小面板 -->
+      <div class="spec-summary-banner">
+        <div class="spec-meta-item">
+          <span class="meta-label">網站名稱</span>
+          <span class="meta-value">媽你好</span>
         </div>
-        <div class="reveal">
-          <p class="eyebrow">OUR PHILOSOPHY</p>
-          <h2 class="section-title" id="storyTitle">在一杯之間，<br>看見產地的<em>晴朗</em>。</h2>
-          <p class="section-copy">我們相信，精品咖啡的美好不該被複雜掩蓋。以小批次烘焙留住豆子的個性，再用穩定、誠實的手沖，讓風土與時間在杯中變得清晰。</p>
-          <p class="section-copy">給懂得放慢腳步的人，也給每一個想重新認識咖啡的人。</p>
-          <a class="intro-link" href="#brew">看看我們如何沖煮 <span>→</span></a>
+        <div class="spec-meta-item">
+          <span class="meta-label">核心用途</span>
+          <span class="meta-value">不會害你啦</span>
+        </div>
+        <div class="spec-meta-item">
+          <span class="meta-label">目標受眾</span>
+          <span class="meta-value">學生族群</span>
+        </div>
+        <div class="spec-meta-item">
+          <span class="meta-label">品牌風格</span>
+          <span class="meta-value">讚讚讚 👍</span>
+        </div>
+        <div class="spec-meta-item">
+          <span class="meta-label">品牌顏色</span>
+          <span class="meta-value">粉色調 🌸</span>
+        </div>
+        <div class="spec-meta-item">
+          <span class="meta-label">核心功能</span>
+          <span class="meta-value">吸引客戶消費</span>
         </div>
       </div>
-    </section>
-
-    <section class="coffee-section" id="coffee" aria-labelledby="coffeeTitle">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div><p class="eyebrow">SEASONAL SELECTION</p><h2 class="section-title" id="coffeeTitle">今天，想喝哪一片<em>藍天</em>？</h2></div>
-          <p class="section-copy">三款當季單品，為不同的晨光、午後與靜夜而選。</p>
-        </div>
-        <div class="coffee-grid">
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">01 / BRIGHT</span>
-              <p class="coffee-origin">ETHIOPIA · YIRGACHEFFE</p>
-              <h3>衣索比亞<br>耶加雪菲</h3>
-              <p class="coffee-notes">白花、佛手柑、蜂蜜</p>
-              <div class="coffee-bottom"><span class="price">NT$ 520 / 200g</span><button class="add-button" type="button" data-coffee="衣索比亞・耶加雪菲">加入收藏 ＋</button></div>
-            </div>
-          </article>
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">02 / JUICY</span>
-              <p class="coffee-origin">KENYA · KIRINYAGA</p>
-              <h3>肯亞<br>祈安布</h3>
-              <p class="coffee-notes">黑醋栗、洛神、葡萄柚</p>
-              <div class="coffee-bottom"><span class="price">NT$ 580 / 200g</span><button class="add-button" type="button" data-coffee="肯亞・祈安布">加入收藏 ＋</button></div>
-            </div>
-          </article>
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">03 / ROUND</span>
-              <p class="coffee-origin">COLOMBIA · HUILA</p>
-              <h3>哥倫比亞<br>慧蘭</h3>
-              <p class="coffee-notes">黃桃、焦糖、可可尾韻</p>
-              <div class="coffee-bottom"><span class="price">NT$ 460 / 200g</span><button class="add-button" type="button" data-coffee="哥倫比亞・慧蘭">加入收藏 ＋</button></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="brew" id="brew" aria-labelledby="brewTitle">
-      <div class="brew-grid wrap">
-        <div class="brew-visual reveal" aria-hidden="true">
-          <div class="pour-ring"></div><div class="brew-v60"></div><p class="brew-caption">V60 / 15G : 240ML<br>2'45''</p>
-        </div>
-        <div class="reveal">
-          <p class="eyebrow">A QUIET RITUAL</p>
-          <h2 class="section-title" id="brewTitle">把時間交給水，<br>讓咖啡說<em>自己的話</em>。</h2>
-          <p class="section-copy">不需要繁複儀式，只要三個安靜的步驟。每一個參數，都是為了讓你更靠近豆子原本的樣子。</p>
-          <ol class="brew-steps">
-            <li><span class="step-no">01</span><span class="step-copy"><b>研磨，先聞見期待</b><span>15g 中細研磨，讓香氣從指尖開始展開。</span></span></li>
-            <li><span class="step-no">02</span><span class="step-copy"><b>悶蒸，等待第一個呼吸</b><span>以 92°C 熱水浸潤 30 秒，喚醒甜感與層次。</span></span></li>
-            <li><span class="step-no">03</span><span class="step-copy"><b>注水，保持自己的節奏</b><span>穩定畫圈，讓 240ml 的清澈在 2 分 45 秒完成。</span></span></li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section class="visit" id="visit" aria-labelledby="visitTitle">
-      <div class="wrap reveal">
-        <p class="eyebrow">THE BLUE SKY LETTER</p>
-        <h2 class="section-title" id="visitTitle">把下一杯好咖啡，<br>寄到你的日常裡。</h2>
-        <p>每月一封風味通信，分享新豆、沖煮靈感與只給會員的小小驚喜。</p>
-        <form class="subscribe" id="subscribeForm">
-          <input type="email" aria-label="電子郵件地址" placeholder="留下你的 Email" required>
-          <button type="submit">訂閱風味通信</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-top wrap">
-      <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark">B</span><span>藍天咖啡<small>BLUE SKY COFFEE</small></span></a><p>為喜愛手沖咖啡的你，留下一段慢慢品味、微微放晴的時間。</p></div>
-      <div><p class="footer-heading">EXPLORE</p><ul class="footer-list"><li><a href="#story">我們的堅持</a></li><li><a href="#coffee">本季選豆</a></li><li><a href="#brew">沖煮日常</a></li></ul></div>
-      <div><p class="footer-heading">CONTACT</p><ul class="footer-list"><li><a href="mailto:hello@bluesky.coffee">hello@bluesky.coffee</a></li><li>台北市大安區晴朗路 18 號</li><li>每日 10:00 — 19:00</li></ul></div>
     </div>
-    <div class="footer-bottom wrap"><span>© 2026 BLUE SKY COFFEE. ALL RIGHTS RESERVED.</span><span>BREW SLOW · LIVE BRIGHT</span></div>
+  </section>
+
+  <!-- 限時促銷倒數 (吸引客戶消費) -->
+  <section class="section-countdown">
+    <div class="container countdown-flex">
+      <div class="countdown-info">
+        <h3>⚡ 本日歐趴急救！限時破盤倒數</h3>
+        <p>今日 24:00 前下單，全館現折 $50 ＋ 滿額再贈「讚讚讚歐趴幸運符」！</p>
+      </div>
+
+      <div class="countdown-timer">
+        <div class="time-box">
+          <span class="time-num" id="hours">08</span>
+          <span class="time-txt">小時</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num" id="minutes">45</span>
+          <span class="time-txt">分鐘</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num" id="seconds">19</span>
+          <span class="time-txt">秒</span>
+        </div>
+      </div>
+
+      <button class="countdown-btn" onclick="scrollToSection('products')">馬上搶特價 💨</button>
+    </div>
+  </section>
+
+  <!-- 熱銷商品區 (吸引客戶消費) -->
+  <section class="section-products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtag">HOT PRODUCTS FOR STUDENTS</span>
+        <h2 class="section-heading">🔥 學生爆款狂銷榜</h2>
+        <p class="section-lead">每一樣都是學長姐真心推薦！買了不踩雷，不會害你啦！</p>
+      </div>
+
+      <!-- 分類標籤 -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterProducts('all')">🌟 全部熱門</button>
+        <button class="filter-tab" onclick="filterProducts('dorm')">🛏️ 宿舍神物</button>
+        <button class="filter-tab" onclick="filterProducts('study')">📚 期末歐趴</button>
+        <button class="filter-tab" onclick="filterProducts('food')">🍜 月底吃喝</button>
+      </div>
+
+      <!-- 商品卡片列表 -->
+      <div class="product-grid" id="productGrid">
+
+        <!-- 商品 1 -->
+        <div class="product-card" data-category="dorm">
+          <div class="product-badge-flag">狂銷 TOP 1</div>
+          <div class="product-img-box">
+            <span class="product-emoji">💡</span>
+          </div>
+          <div class="product-body">
+            <span class="product-category">宿舍必備</span>
+            <h3 class="product-title">磁吸式護眼靜音閱讀燈</h3>
+            <p class="product-desc">室友睡了也不怕吵！三段溫暖色溫無閃爍，磁吸床頭秒拆裝，熬夜寫報告神器。</p>
+            <div class="product-meta-row">
+              <div class="price-group">
+                <span class="origin-price">NT$ 599</span>
+                <span class="current-price">NT$ 299</span>
+              </div>
+              <span class="sales-count">已售出 1,842 件</span>
+            </div>
+            <button class="btn-add-cart" onclick="addToCart('磁吸式護眼靜音閱讀燈', 299, '💡')">
+              <span>🛒 加入購物車</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 商品 2 -->
+        <div class="product-card" data-category="study">
+          <div class="product-badge-flag">歐趴首推</div>
+          <div class="product-img-box">
+            <span class="product-emoji">🎧</span>
+          </div>
+          <div class="product-body">
+            <span class="product-category">期末歐趴</span>
+            <h3 class="product-title">隔絕室友打呼降噪耳塞套組</h3>
+            <p class="product-desc">德國進口慢回彈記憶海綿，一秒進入自習室專注模式，期末考必備無痛歐趴！</p>
+            <div class="product-meta-row">
+              <div class="price-group">
+                <span class="origin-price">NT$ 350</span>
+                <span class="current-price">NT$ 150</span>
+              </div>
+              <span class="sales-count">已售出 3,210 件</span>
+            </div>
+            <button class="btn-add-cart" onclick="addToCart('隔絕室友打呼降噪耳塞套組', 150, '🎧')">
+              <span>🛒 加入購物車</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 商品 3 -->
+        <div class="product-card" data-category="food">
+          <div class="product-badge-flag">超值組合</div>
+          <div class="product-img-box">
+            <span class="product-emoji">🍜</span>
+          </div>
+          <div class="product-body">
+            <span class="product-category">月底吃喝</span>
+            <h3 class="product-title">月底救星！元氣點心補給箱</h3>
+            <p class="product-desc">精選12款高熱量抗飢餓能量棒與無負擔小餅乾，熬夜念書不再飢腸轆轆，媽看了超安心！</p>
+            <div class="product-meta-row">
+              <div class="price-group">
+                <span class="origin-price">NT$ 620</span>
+                <span class="current-price">NT$ 380</span>
+              </div>
+              <span class="sales-count">已售出 945 件</span>
+            </div>
+            <button class="btn-add-cart" onclick="addToCart('月底救星！元氣點心補給箱', 380, '🍜')">
+              <span>🛒 加入購物車</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 商品 4 -->
+        <div class="product-card" data-category="dorm">
+          <div class="product-badge-flag">媽媽大推</div>
+          <div class="product-img-box">
+            <span class="product-emoji">🫖</span>
+          </div>
+          <div class="product-body">
+            <span class="product-category">宿舍必備</span>
+            <h3 class="product-title">迷你304不鏽鋼多功能快煮鍋</h3>
+            <p class="product-desc">宿舍煮泡麵、水餃、熱牛奶一鍋搞定！防乾燒自動斷電，安全防護第一名！不會害你啦！</p>
+            <div class="product-meta-row">
+              <div class="price-group">
+                <span class="origin-price">NT$ 890</span>
+                <span class="current-price">NT$ 460</span>
+              </div>
+              <span class="sales-count">已售出 2,109 件</span>
+            </div>
+            <button class="btn-add-cart" onclick="addToCart('迷你304不鏽鋼多功能快煮鍋', 460, '🫖')">
+              <span>🛒 加入購物車</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 商品 5 -->
+        <div class="product-card" data-category="study">
+          <div class="product-badge-flag">效率神器</div>
+          <div class="product-img-box">
+            <span class="product-emoji">💻</span>
+          </div>
+          <div class="product-body">
+            <span class="product-category">期末歐趴</span>
+            <h3 class="product-title">可折疊鋁合金人體工學筆電支架</h3>
+            <p class="product-desc">拯救低頭族肩頸痠痛！八段高度可調，超薄輕便隨身攜帶，自習室打報告效率翻倍！</p>
+            <div class="product-meta-row">
+              <div class="price-group">
+                <span class="origin-price">NT$ 550</span>
+                <span class="current-price">NT$ 270</span>
+              </div>
+              <span class="sales-count">已售出 1,520 件</span>
+            </div>
+            <button class="btn-add-cart" onclick="addToCart('可折疊鋁合金筆電支架', 270, '💻')">
+              <span>🛒 加入購物車</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 商品 6 -->
+        <div class="product-card" data-category="food">
+          <div class="product-badge-flag">喝水達人</div>
+          <div class="product-img-box">
+            <span class="product-emoji">🥤</span>
+          </div>
+          <div class="product-body">
+            <span class="product-category">月底吃喝</span>
+            <h3 class="product-title">粉萌大容量提把陶瓷保溫吸管杯</h3>
+            <p class="product-desc">裝大杯手搖飲環保現折 5 元！全天保冰保溫，粉嫩外觀吸睛度滿分，讚讚讚！</p>
+            <div class="product-meta-row">
+              <div class="price-group">
+                <span class="origin-price">NT$ 690</span>
+                <span class="current-price">NT$ 349</span>
+              </div>
+              <span class="sales-count">已售出 2,780 件</span>
+            </div>
+            <button class="btn-add-cart" onclick="addToCart('粉萌大容量提把陶瓷保溫杯', 349, '🥤')">
+              <span>🛒 加入購物車</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 學生領券互動區 (刺激消費) -->
+  <section class="section-coupon-banner" id="coupon">
+    <div class="container">
+      <div class="coupon-card">
+        <div class="coupon-text">
+          <h3>🎓 學生身分限定！領取專屬福利金</h3>
+          <p>輸入折扣代碼立即領取現折優惠，滿 $499 現折 $100，買越多省越多！</p>
+          <div class="coupon-form">
+            <input type="text" id="couponInput" placeholder="請輸入折扣碼（如：STUDENT88）" value="STUDENT88">
+            <button onclick="applyCoupon()">兌換優惠券 🎟️</button>
+          </div>
+        </div>
+        <div class="coupon-side-box">
+          <div class="big-percent">88折</div>
+          <div style="font-weight:900; font-size:1.15rem; color:var(--text-dark); margin:6px 0;">全站學生特權卡</div>
+          <p style="font-size:0.85rem; color:var(--text-muted);">結帳自動生效 • 不會害你啦！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 讚讚讚 學生評價牆 (品牌風格) -->
+  <section class="section-testimonials" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtag">WALL OF PRAISE</span>
+        <h2 class="section-heading">👍 全台同學齊推「讚讚讚」</h2>
+        <p class="section-lead">聽聽學長姐與同學怎麼說，每一句都是真材實料的好評！</p>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="review-card">
+          <div>
+            <div class="stars-row">★★★★★</div>
+            <p class="review-comment">「一開始看到『不會害你啦』還覺得搞笑，買了多功能快煮鍋之後直接成為宿舍廚神！價格超佛，連我媽視訊看到都說買得太聰明了！讚讚讚！」</p>
+          </div>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">👩‍🎓</div>
+            <div>
+              <div class="reviewer-name">陳同學</div>
+              <div class="reviewer-school">國立中興大學 • 大二</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars-row">★★★★★</div>
+            <p class="review-comment">「降噪耳塞真的救了我的期末考！室友打呼如雷，我戴上之後秒入定，這學期直接歐趴！粉色包裝質感也超級棒，真的不會害你啦！」</p>
+          </div>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">👨‍🎓</div>
+            <div>
+              <div class="reviewer-name">林同學</div>
+              <div class="reviewer-school">逢甲大學 • 大三</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars-row">★★★★★</div>
+            <p class="review-comment">「客服態度超好，出貨快到不行，隔天就送到宿舍超商！身為窮學生，能找到這種便宜又有保障的網站，必須給十個大拇指，讚讚讚！」</p>
+          </div>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">🙋‍♀️</div>
+            <div>
+              <div class="reviewer-name">張同學</div>
+              <div class="reviewer-school">輔仁大學 • 大一</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常見問題 FAQ -->
+  <section class="section-faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtag">QUESTIONS & ANSWERS</span>
+        <h2 class="section-heading">媽媽與同學的常見問題</h2>
+        <p class="section-lead">解開所有疑惑，放心買、聰明省！</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Q1：你們的標語「不會害你啦」是真的嗎？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            是真的！「媽你好」所有上架商品均經過嚴格品質測試，並經過「媽媽挑剔小組」實測合規。我們不賣劣質雜牌，提供完整的7天鑑賞期，絕不讓學生花半毛冤枉錢！
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Q2：如何享有學生專屬 88 折優惠？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            結帳時輸入折扣碼「STUDENT88」，或點擊頁面上的「領取學生券」，系統即會自動於結帳購物車內計算折抵金額，立即享受超甜學生價！
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Q3：商品可以送到大學宿舍或指定超商嗎？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            完全可以！全台各大專院校校內超商、宿舍傳達室皆支援配送服務，單筆訂單滿 $399 即享免運優惠！
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Q4：為什麼品牌風格叫「讚讚讚」？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            因為我們的核心目標就是讓每一位學生在拆開包裹時，都能發自內心豎起大拇指連誇三聲「讚讚讚」！高性價比、高品質、高顏值就是我們的態度！
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>💖 媽你好</h4>
+          <p>
+            專為學生打造的高CP值購物平台。堅持「不會害你啦」的初心，提供粉嫩療癒、品質「讚讚讚」的生活良物，陪伴每位學生度過精彩的大學生活！
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>規格總覽</h5>
+          <ul class="footer-links">
+            <li><a href="#">網站名稱：媽你好</a></li>
+            <li><a href="#">網站用途：不會害你啦</a></li>
+            <li><a href="#">目標受眾：學生</a></li>
+            <li><a href="#">品牌風格：讚讚讚</a></li>
+            <li><a href="#">品牌顏色：粉色</a></li>
+            <li><a href="#">核心功能：吸引客戶消費</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>學生貼心服務</h5>
+          <ul class="footer-links">
+            <li><a href="#coupon">學生折扣碼兌換</a></li>
+            <li><a href="#products">宿舍生活熱賣榜</a></li>
+            <li><a href="#guarantee">安心退換貨承諾</a></li>
+            <li><a href="#faq">常客聯絡與反饋</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 媽你好 (Ma Ni Hao). 保留所有權利 • 規格驅動開發作業專用 • 放心買，不會害你啦！👍</p>
+      </div>
+    </div>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- 購物車抽屜 Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3>🛒 我的購物車</h3>
+      <button class="close-drawer-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItemList">
+      <div class="empty-cart-state" id="emptyCart">
+        <span class="empty-icon">🛒</span>
+        <p>購物車目前空空的喔！</p>
+        <p style="font-size:0.85rem; margin-top:6px;">快去逛逛學生熱門好物吧，不會害你啦～</p>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <div class="cart-total-line">
+        <span>小計金額：</span>
+        <span class="cart-total-price" id="cartTotal">NT$ 0</span>
+      </div>
+      <button class="btn-checkout" onclick="checkout()">
+        媽媽安心結帳 👉（現省超多！）
+      </button>
+    </div>
+  </div>
+
+  <!-- 浮動訊息 Toast -->
+  <div class="toast-notice" id="toastNotice">
+    <span id="toastIcon">✨</span>
+    <span id="toastMsg">已加入購物車！</span>
+  </div>
+
+  <!-- JavaScript 互動功能 -->
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', open);
-      menuToggle.setAttribute('aria-label', open ? '關閉導覽選單' : '開啟導覽選單');
-      menuToggle.textContent = open ? '×' : '☰';
-    });
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', '開啟導覽選單');
-      menuToggle.textContent = '☰';
-    }));
+    // 購物車數據庫
+    let cart = [];
+    let discountRate = 1.0;
 
-    const toast = document.getElementById('toast');
-    let toastTimer;
-    function showToast(message) {
-      window.clearTimeout(toastTimer);
-      toast.textContent = message;
+    // 開關購物車
+    const openCartBtn = document.getElementById('openCartBtn');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartDrawer = document.getElementById('cartDrawer');
+
+    openCartBtn.addEventListener('click', openCart);
+
+    function openCart() {
+      cartOverlay.classList.add('open');
+      cartDrawer.classList.add('open');
+      renderCart();
+    }
+
+    function closeCart() {
+      cartOverlay.classList.remove('open');
+      cartDrawer.classList.remove('open');
+    }
+
+    // 加入購物車
+    function addToCart(title, price, emoji) {
+      const existing = cart.find(item => item.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price, emoji, qty: 1 });
+      }
+      updateCartBadge();
+      showToast(`🛒 已成功將「${title}」加入購物車！讚讚讚！`, '💖');
+    }
+
+    // 變更數量
+    function updateQty(title, change) {
+      const item = cart.find(i => i.title === title);
+      if (!item) return;
+      item.qty += change;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.title !== title);
+      }
+      updateCartBadge();
+      renderCart();
+    }
+
+    // 更新角標
+    function updateCartBadge() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartCount').textContent = totalQty;
+    }
+
+    // 渲染購物車抽屜
+    function renderCart() {
+      const listEl = document.getElementById('cartItemList');
+      const totalEl = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        listEl.innerHTML = `
+          <div class="empty-cart-state">
+            <span class="empty-icon">🛒</span>
+            <p style="font-weight:800; font-size:1.1rem; color:var(--text-dark);">購物車目前是空的</p>
+            <p style="font-size:0.88rem; margin-top:6px;">快去挑選學生推薦好物吧，不會害你啦！</p>
+          </div>
+        `;
+        totalEl.textContent = 'NT$ 0';
+        return;
+      }
+
+      let subtotal = 0;
+      let html = '';
+
+      cart.forEach(item => {
+        const itemSum = item.price * item.qty;
+        subtotal += itemSum;
+        html += `
+          <div class="cart-item-row">
+            <div class="cart-item-thumb">${item.emoji}</div>
+            <div class="cart-item-details">
+              <div class="cart-item-title">${item.title}</div>
+              <div class="cart-item-price">NT$ ${item.price}</div>
+            </div>
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="updateQty('${item.title}', -1)">-</button>
+              <span class="qty-number">${item.qty}</span>
+              <button class="qty-btn" onclick="updateQty('${item.title}', 1)">+</button>
+            </div>
+          </div>
+        `;
+      });
+
+      listEl.innerHTML = html;
+
+      const finalPrice = Math.round(subtotal * discountRate);
+      if (discountRate < 1.0) {
+        totalEl.innerHTML = `<span style="font-size:0.85rem; color:#888; text-decoration:line-through; margin-right:6px;">NT$ ${subtotal}</span> NT$ ${finalPrice} (88折)`;
+      } else {
+        totalEl.textContent = `NT$ ${finalPrice}`;
+      }
+    }
+
+    // 結帳功能
+    function checkout() {
+      if (cart.length === 0) {
+        showToast('購物車內還沒有商品喔！快去挑挑好物吧！', '⚠️');
+        return;
+      }
+      const total = document.getElementById('cartTotal').textContent;
+      alert(`🎉 恭喜完成下單！\n結帳金額：${total}\n\n「媽你好」保證火速送達宿舍，不會害你啦！👍👍👍`);
+      cart = [];
+      updateCartBadge();
+      closeCart();
+    }
+
+    // 複製折扣代碼
+    function copyVoucher(code) {
+      navigator.clipboard.writeText(code).then(() => {
+        showToast(`已複製折扣碼「${code}」！可在下方直接兌換！`, '🎉');
+      }).catch(() => {
+        showToast(`折扣碼為：${code}`, '🎟️');
+      });
+    }
+
+    // 應用優惠代碼
+    function applyCoupon() {
+      const input = document.getElementById('couponInput');
+      const val = input.value.trim().toUpperCase();
+      if (val === 'STUDENT88' || val === 'MOM888') {
+        discountRate = 0.88;
+        showToast('🎓 學生專屬 88 折優惠碼已套用！結帳自動折扣！', '🥳');
+        renderCart();
+      } else {
+        showToast('請輸入有效折扣碼（如：STUDENT88）', '💡');
+      }
+    }
+
+    // 分類篩選
+    function filterProducts(category) {
+      const tabs = document.querySelectorAll('.filter-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // FAQ 摺疊互動
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // 平滑滾動至指定區域
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // 浮動訊息 Toast
+    let toastTimeout;
+    function showToast(msg, icon = '💖') {
+      const toast = document.getElementById('toastNotice');
+      document.getElementById('toastMsg').textContent = msg;
+      document.getElementById('toastIcon').textContent = icon;
       toast.classList.add('show');
-      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
     }
-    document.querySelectorAll('[data-coffee]').forEach(button => button.addEventListener('click', () => {
-      showToast(`已將「${button.dataset.coffee}」加入你的收藏。`);
-    }));
-    document.getElementById('subscribeForm').addEventListener('submit', event => {
-      event.preventDefault();
-      event.currentTarget.reset();
-      showToast('謝謝訂閱，下一封晴朗的風味通信即將寄出。');
-    });
 
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const revealItems = document.querySelectorAll('.reveal');
-    if (reducedMotion || !('IntersectionObserver' in window)) {
-      revealItems.forEach(item => item.classList.add('visible'));
-    } else {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: .12 });
-      revealItems.forEach(item => observer.observe(item));
+    // 限時特惠倒數計時器
+    let remainingSeconds = 8 * 3600 + 45 * 60 + 20;
+    function updateCountdown() {
+      if (remainingSeconds > 0) {
+        remainingSeconds--;
+        const h = Math.floor(remainingSeconds / 3600);
+        const m = Math.floor((remainingSeconds % 3600) / 60);
+        const s = remainingSeconds % 60;
+        document.getElementById('hours').textContent = String(h).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+      }
     }
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
