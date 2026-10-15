@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="媽妳好，專為學生挑選實用又好看的宿舍與讀書好物。輸入學生折扣碼，讓每一筆消費都買得安心。">
+  <meta name="theme-color" content="#fff7f8">
+  <title>媽妳好｜學生生活好物，放心挑就對啦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #e84370;
+      --pink-dark: #ba2f58;
+      --pink-pale: #f9dfe5;
+      --paper: #fff7f8;
+      --white: #fffefe;
+      --ink: #271b20;
+      --muted: #796b70;
+      --line: #ead9dd;
+      --lime: #d5ed91;
+      --blue: #bce5e6;
+      --shadow: 0 18px 48px rgba(78, 31, 46, .12);
+      --sans: "Noto Sans TC", sans-serif;
+      --display: "DM Sans", "Noto Sans TC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.7; }
+    body.drawer-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #167b80; outline-offset: 3px; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .announcement { min-height: 34px; display: flex; align-items: center; justify-content: center; padding: 5px 16px; color: #fff; background: var(--ink); text-align: center; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+    .announcement strong { color: var(--lime); }
+    .site-header { position: sticky; z-index: 20; top: 0; background: rgba(255,247,248,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+    .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+    .brand-mark { display: grid; width: 38px; aspect-ratio: 1; place-items: center; color: #fff; background: var(--pink); border-radius: 50%; font-family: var(--display); font-size: 18px; font-weight: 800; transform: rotate(-7deg); }
+    .brand-name { display: block; font-size: 18px; font-weight: 900; line-height: 1.1; }
+    .brand-tag { display: block; margin-top: 4px; color: var(--muted); font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: .13em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; margin: 0; padding: 0; list-style: none; font-size: 13px; font-weight: 700; }
+    .nav-links a { transition: color .18s ease; }
+    .nav-links a:hover { color: var(--pink); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .icon-button, .menu-button { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); background: transparent; cursor: pointer; }
+    .icon-button { position: relative; font-size: 18px; }
+    .cart-count { position: absolute; top: -6px; right: -6px; display: grid; min-width: 19px; height: 19px; place-items: center; padding: 0 4px; color: #fff; background: var(--pink); border: 2px solid var(--paper); border-radius: 50%; font: 700 10px/1 var(--display); }
+    .menu-button { display: none; font-size: 20px; }
+    .button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 12px; padding: 11px 20px; border: 1px solid transparent; cursor: pointer; font-size: 13px; font-weight: 800; transition: transform .18s ease, background .18s ease, color .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-pink { color: #fff; background: var(--pink); }
+    .button-pink:hover { background: var(--pink-dark); }
+    .button-dark { color: #fff; background: var(--ink); }
+    .button-dark:hover { background: #49343d; }
+
+    .hero { position: relative; overflow: hidden; background: #f4cbd4; }
+    .hero::before { position: absolute; top: -260px; left: -180px; width: 650px; height: 650px; border: 1px solid rgba(186,47,88,.2); border-radius: 50%; box-shadow: 0 0 0 68px rgba(186,47,88,.045), 0 0 0 154px rgba(186,47,88,.035); content: ""; }
+    .hero-grid { position: relative; display: grid; min-height: 595px; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 44px; padding-block: 58px; }
+    .hero-copy { position: relative; z-index: 2; padding-block: 28px; }
+    .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 18px; color: var(--pink-dark); font: 800 10px/1.4 var(--display); letter-spacing: .15em; }
+    .eyebrow::before { width: 24px; height: 2px; background: currentColor; content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 { max-width: 10ch; margin-bottom: 18px; font: 900 clamp(43px, 5.4vw, 70px)/1.2 var(--sans); letter-spacing: 0; }
+    .hero h1 span { color: var(--pink-dark); font-family: "Noto Serif TC", serif; }
+    .hero-lede { max-width: 43ch; margin-bottom: 25px; color: #5b454d; font-size: 15px; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin: 27px 0 0; color: #614d54; font-size: 11px; font-weight: 700; }
+    .hero-note::before { width: 28px; height: 1px; background: currentColor; content: ""; }
+    .hero-art { position: relative; display: grid; min-height: 430px; place-items: center; }
+    .hero-photo { position: absolute; inset: 18px 10px 18px 12px; overflow: hidden; background: #d6c5a8; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 54%; }
+    .hero-photo::after { position: absolute; inset: 0; background: linear-gradient(20deg, rgba(39,27,32,.24), transparent 50%); content: ""; }
+    .hero-sticker { position: absolute; z-index: 1; top: 2px; right: 0; display: grid; width: 104px; aspect-ratio: 1; place-content: center; color: var(--ink); background: var(--lime); border-radius: 50%; text-align: center; transform: rotate(9deg); }
+    .hero-sticker b { font: 800 19px/1.1 var(--display); }
+    .hero-sticker span { margin-top: 5px; font-size: 10px; font-weight: 800; }
+    .hero-caption { position: absolute; z-index: 2; right: -12px; bottom: 0; width: 218px; padding: 18px 20px; color: var(--ink); background: var(--white); box-shadow: var(--shadow); }
+    .hero-caption small { display: block; margin-bottom: 4px; color: var(--pink); font: 800 9px/1.4 var(--display); letter-spacing: .12em; }
+    .hero-caption strong { font-size: 14px; }
+
+    .perks { border-bottom: 1px solid var(--line); background: var(--white); }
+    .perks-row { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .perk { display: flex; min-height: 84px; align-items: center; justify-content: center; gap: 12px; padding: 15px; }
+    .perk + .perk { border-left: 1px solid var(--line); }
+    .perk-icon { font-size: 21px; }
+    .perk b { display: block; font-size: 12px; }
+    .perk span:last-child { display: block; color: var(--muted); font-size: 10px; }
+
+    .section { padding-block: 92px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 30px; }
+    .section-heading .eyebrow { margin-bottom: 9px; }
+    .section-heading h2 { margin-bottom: 0; font: 800 clamp(28px, 3.4vw, 42px)/1.3 var(--sans); letter-spacing: 0; }
+    .section-heading h2 em { color: var(--pink); font-style: normal; }
+    .section-heading p { max-width: 34ch; margin-bottom: 3px; color: var(--muted); font-size: 13px; }
+    .shop { background: var(--paper); }
+    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
+    .product { display: flex; min-width: 0; flex-direction: column; background: var(--white); border-bottom: 1px solid var(--line); transition: transform .2s ease, box-shadow .2s ease; }
+    .product:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .product-image { position: relative; height: 220px; overflow: hidden; background: #f0e8df; }
+    .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .product:hover .product-image img { transform: scale(1.04); }
+    .product-tag { position: absolute; top: 12px; left: 12px; padding: 5px 9px; color: var(--ink); background: var(--lime); font-size: 9px; font-weight: 900; }
+    .product-info { display: flex; flex: 1; flex-direction: column; padding: 16px 16px 17px; }
+    .product-type { margin-bottom: 4px; color: var(--pink-dark); font: 800 9px/1.3 var(--display); letter-spacing: .1em; }
+    .product h3 { margin-bottom: 6px; font-size: 15px; font-weight: 800; }
+    .product-desc { min-height: 42px; margin-bottom: 12px; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px solid #f0e5e8; }
+    .price { font: 800 15px/1.2 var(--display); }
+    .price small { display: block; margin-top: 3px; color: var(--muted); font: 500 9px/1.3 var(--sans); }
+    .add-button { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; color: var(--pink-dark); background: var(--pink-pale); border: 0; cursor: pointer; font-size: 20px; transition: color .18s ease, background .18s ease; }
+    .add-button:hover { color: #fff; background: var(--pink); }
+
+    .student-deal { padding-block: 0 92px; background: var(--paper); }
+    .deal-band { position: relative; display: grid; min-height: 250px; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 34px; overflow: hidden; padding: 38px 48px; color: #fff; background: var(--pink-dark); }
+    .deal-band::after { position: absolute; top: -125px; right: 11%; width: 330px; height: 330px; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; box-shadow: 0 0 0 42px rgba(255,255,255,.055), 0 0 0 96px rgba(255,255,255,.04); content: ""; }
+    .deal-copy, .deal-form-wrap { position: relative; z-index: 1; }
+    .deal-copy .eyebrow { color: var(--lime); }
+    .deal-copy h2 { max-width: 16ch; margin-bottom: 8px; font: 800 30px/1.35 var(--sans); }
+    .deal-copy p { max-width: 40ch; margin-bottom: 0; color: rgba(255,255,255,.8); font-size: 12px; }
+    .deal-form-wrap { padding: 20px; color: var(--ink); background: var(--white); }
+    .deal-form-wrap label { display: block; margin-bottom: 9px; font-size: 11px; font-weight: 800; }
+    .deal-form { display: flex; gap: 7px; }
+    .deal-form input { width: 100%; min-width: 0; height: 45px; padding: 0 12px; border: 1px solid var(--line); border-radius: 0; background: #fff; font-size: 12px; }
+    .deal-form button { min-width: 82px; border: 0; color: #fff; background: var(--ink); cursor: pointer; font-size: 11px; font-weight: 800; }
+    .deal-hint { margin: 9px 0 0; color: var(--muted); font-size: 10px; }
+
+    .promise { background: #f1e8e5; }
+    .promise-grid { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 65px; }
+    .promise-art { position: relative; min-height: 350px; overflow: hidden; background: var(--blue); }
+    .promise-art img { width: 100%; height: 100%; min-height: 350px; object-fit: cover; mix-blend-mode: multiply; }
+    .promise-stamp { position: absolute; right: 18px; bottom: 18px; padding: 12px 15px; color: var(--ink); background: var(--lime); font-size: 11px; font-weight: 900; transform: rotate(-4deg); }
+    .promise-copy h2 { max-width: 14ch; margin-bottom: 12px; font: 800 clamp(28px, 3vw, 38px)/1.35 var(--sans); }
+    .promise-copy > p:not(.eyebrow) { max-width: 48ch; color: var(--muted); font-size: 13px; }
+    .promise-points { display: grid; grid-template-columns: repeat(2,1fr); gap: 0 18px; margin: 25px 0 0; padding: 0; list-style: none; }
+    .promise-points li { padding: 11px 0; border-top: 1px solid #d9c9c8; font-size: 11px; font-weight: 700; }
+    .promise-points span { margin-right: 8px; color: var(--pink); }
+
+    .voices { background: var(--white); }
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .voice { min-height: 180px; padding: 22px; border-top: 2px solid var(--pink); background: var(--paper); }
+    .voice-stars { margin-bottom: 13px; color: var(--pink); font-size: 12px; letter-spacing: .12em; }
+    .voice blockquote { margin: 0 0 16px; font-size: 13px; font-weight: 600; }
+    .voice figcaption { color: var(--muted); font-size: 10px; }
+
+    .faq { background: var(--paper); }
+    .faq-layout { display: grid; grid-template-columns: .7fr 1.3fr; gap: 54px; }
+    .faq-intro h2 { margin: 0; font: 800 34px/1.35 var(--sans); }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-item summary { display: flex; min-height: 58px; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; font-size: 13px; font-weight: 800; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { color: var(--pink); content: "+"; font: 600 20px/1 var(--display); }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { margin: 0; padding: 0 28px 16px 0; color: var(--muted); font-size: 12px; }
+
+    .footer { color: rgba(255,255,255,.8); background: var(--ink); }
+    .footer-main { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 42px; padding-block: 48px; }
+    .footer .brand-name { color: #fff; }
+    .footer .brand-tag { color: rgba(255,255,255,.55); }
+    .footer-brand p { max-width: 33ch; margin: 17px 0 0; color: rgba(255,255,255,.63); font-size: 11px; }
+    .footer h3 { margin-bottom: 13px; color: var(--lime); font: 800 10px/1.3 var(--display); letter-spacing: .12em; }
+    .footer-links { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 11px; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-block: 15px; border-top: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.43); font-size: 9px; }
+
+    .overlay { position: fixed; z-index: 39; inset: 0; background: rgba(39,27,32,.48); opacity: 0; pointer-events: none; transition: opacity .22s ease; }
+    .overlay.open { opacity: 1; pointer-events: auto; }
+    .cart-drawer { position: fixed; z-index: 40; top: 0; right: 0; bottom: 0; display: flex; width: min(420px, 100%); flex-direction: column; background: var(--white); box-shadow: var(--shadow); transform: translateX(102%); transition: transform .26s ease; }
+    .cart-drawer.open { transform: translateX(0); }
+    .drawer-head { display: flex; min-height: 70px; align-items: center; justify-content: space-between; padding: 0 22px; border-bottom: 1px solid var(--line); }
+    .drawer-head h2 { margin: 0; font-size: 16px; }
+    .close-button { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 18px; }
+    .cart-items { flex: 1; overflow: auto; padding: 10px 22px; }
+    .empty-cart { padding: 50px 0; color: var(--muted); text-align: center; font-size: 13px; }
+    .cart-item { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .cart-item b { display: block; font-size: 12px; }
+    .cart-item small { color: var(--muted); font-size: 10px; }
+    .cart-controls { display: flex; align-items: center; gap: 9px; }
+    .cart-controls button { display: grid; width: 27px; height: 27px; place-items: center; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+    .cart-controls span { min-width: 14px; text-align: center; font-size: 11px; font-weight: 800; }
+    .drawer-bottom { padding: 18px 22px 22px; border-top: 1px solid var(--line); }
+    .total-row { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 12px; font-weight: 800; }
+    .total-row strong { font: 800 18px/1.1 var(--display); }
+    .drawer-bottom .button { width: 100%; }
+    .toast { position: fixed; z-index: 50; right: 22px; bottom: 22px; max-width: min(360px, calc(100% - 44px)); padding: 13px 18px; color: #fff; background: var(--ink); border-left: 4px solid var(--lime); box-shadow: var(--shadow); font-size: 12px; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .2s ease, transform .2s ease; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 17px; }
+      .hero-grid { min-height: 550px; gap: 24px; }
+      .hero-art { min-height: 370px; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .promise-grid { gap: 38px; }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 34px, 1160px); }
+      .nav { min-height: 66px; }
+      .menu-button { display: grid; }
+      .nav-links { position: absolute; top: 100%; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 17px 14px; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); }
+      .nav-links.open { display: grid; }
+      .nav-links a { display: block; padding: 11px 4px; border-bottom: 1px solid var(--line); }
+      .hero-grid { grid-template-columns: 1fr; gap: 14px; padding-block: 36px 48px; }
+      .hero-copy { padding: 0; }
+      .hero h1 { max-width: 12ch; font-size: clamp(42px, 12vw, 58px); }
+      .hero-lede { max-width: 50ch; font-size: 13px; }
+      .hero-art { min-height: min(78vw, 370px); margin-inline: 2px 12px; }
+      .hero-photo { inset: 8px 7px 8px 0; }
+      .hero-sticker { right: -11px; width: 84px; }
+      .hero-sticker b { font-size: 16px; }
+      .hero-caption { right: -12px; width: 190px; padding: 14px 16px; }
+      .perks-row { grid-template-columns: 1fr; padding-block: 6px; }
+      .perk { min-height: 63px; justify-content: flex-start; padding-inline: 13px; }
+      .perk + .perk { border-top: 1px solid var(--line); border-left: 0; }
+      .section { padding-block: 70px; }
+      .section-heading { display: block; margin-bottom: 24px; }
+      .section-heading p { margin: 11px 0 0; }
+      .product-grid { gap: 11px; }
+      .product-image { height: clamp(140px, 43vw, 205px); }
+      .product-info { padding: 13px 12px; }
+      .product h3 { font-size: 13px; }
+      .product-desc { min-height: 50px; font-size: 10px; }
+      .price { font-size: 13px; }
+      .add-button { width: 34px; height: 34px; }
+      .student-deal { padding-bottom: 70px; }
+      .deal-band { grid-template-columns: 1fr; gap: 23px; padding: 28px 22px; }
+      .deal-copy h2 { font-size: 26px; }
+      .deal-form-wrap { padding: 15px; }
+      .promise-grid, .faq-layout { grid-template-columns: 1fr; gap: 28px; }
+      .promise-art, .promise-art img { min-height: 260px; }
+      .promise-copy h2 { font-size: 30px; }
+      .voice-grid { grid-template-columns: 1fr; gap: 11px; }
+      .voice { min-height: auto; }
+      .faq-intro h2 { font-size: 29px; }
+      .footer-main { grid-template-columns: 1fr 1fr; gap: 30px 20px; padding-block: 38px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { display: block; }
+      .footer-bottom span { display: block; margin-top: 4px; }
+    }
+    @media (max-width: 380px) {
+      .nav { gap: 8px; }
+      .brand-tag { display: none; }
+      .brand-name { font-size: 16px; }
+      .brand-mark { width: 34px; }
+      .hero-buttons .button { width: 100%; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-image { height: 220px; }
+      .product-desc { min-height: 0; }
+      .promise-points { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">新生開學季　<strong>學生輸入 MA88 現折 88 折</strong>　全館滿 $699 宿舍免運</div>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="主要導覽">
+      <a class="brand" href="#top" aria-label="媽妳好首頁">
+        <span class="brand-mark" aria-hidden="true">妳</span>
+        <span><span class="brand-name">媽妳好</span><span class="brand-tag">STUDENT LIFE, MADE EASY</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#shop">宿舍選物</a></li>
+        <li><a href="#deal">學生優惠</a></li>
+        <li><a href="#promise">安心保證</a></li>
+        <li><a href="#faq">常見問題</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-button" id="cartOpen" type="button" aria-label="開啟購物袋" aria-controls="cartDrawer" aria-expanded="false">♡<span class="cart-count" id="cartCount">0</span></button>
+        <button class="menu-button" id="menuButton" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="navLinks">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-grid wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">GOOD PICKS FOR CAMPUS DAYS</p>
+          <h1 id="heroTitle">媽妳好，<br>上大學也要<span>好好生活。</span></h1>
+          <p class="hero-lede">從熬夜讀書的桌邊小物，到住進宿舍才發現需要的生活用品。幫妳挑過、用過、覺得實在，才放進這間學生選物店。</p>
+          <div class="hero-buttons">
+            <a class="button button-pink" href="#shop">逛逛學生選物 <span aria-hidden="true">↗</span></a>
+            <a class="button button-dark" href="#deal">領取 88 折折扣</a>
+          </div>
+          <p class="hero-note">不會害你拉，買得聰明也買得開心。</p>
+        </div>
+        <div class="hero-art" aria-label="學生在宿舍書桌前準備讀書">
+          <div class="hero-photo"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85" alt="明亮的書桌與筆記型電腦"></div>
+          <div class="hero-sticker"><b>MA88</b><span>學生限定<br>現折 88 折</span></div>
+          <div class="hero-caption"><small>GOOD THINGS, HONEST PRICE</small><strong>把日子過順一點，<br>從一件好物開始。</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="perks" aria-label="購物服務">
+      <div class="perks-row wrap">
+        <div class="perk"><span class="perk-icon" aria-hidden="true">✳</span><span><b>學生價，先替妳算過</b><span>日常好物不必買得心疼</span></span></div>
+        <div class="perk"><span class="perk-icon" aria-hidden="true">⌂</span><span><b>宿舍生活直接送到</b><span>滿 $699 宿舍地址免運</span></span></div>
+        <div class="perk"><span class="perk-icon" aria-hidden="true">↺</span><span><b>七天安心鑑賞</b><span>不合適，照規則申請退換</span></span></div>
+      </div>
+    </section>
+
+    <section class="section shop" id="shop" aria-labelledby="shopTitle">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">CAMPUS PICKS · 01</p><h2 id="shopTitle">宿舍裡的<span>實用派。</span></h2></div>
+          <p>挑幾件真的會天天用到的，讓小房間更順手、讀書時間更舒服。</p>
+        </div>
+        <div class="product-grid">
+          <article class="product" data-name="雲朵閱讀燈" data-price="590">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80" alt="簡約桌燈照亮讀書桌" loading="lazy"><span class="product-tag">宿舍必備</span></div>
+            <div class="product-info"><span class="product-type">STUDY · LIGHT</span><h3>雲朵閱讀燈</h3><p class="product-desc">三段亮度，熄燈後也能安靜讀到最後一頁。</p><div class="product-bottom"><span class="price">$590<small>原價 $720</small></span><button class="add-button" type="button" aria-label="加入雲朵閱讀燈到購物袋">＋</button></div></div>
+          </article>
+          <article class="product" data-name="日日補水隨行瓶" data-price="420">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=800&q=80" alt="方便攜帶的隨行水瓶" loading="lazy"><span class="product-tag">回購人氣</span></div>
+            <div class="product-info"><span class="product-type">DAILY · HYDRATE</span><h3>日日補水隨行瓶</h3><p class="product-desc">輕巧好帶、杯口好清洗，上課到晚自習都陪妳。</p><div class="product-bottom"><span class="price">$420<small>原價 $520</small></span><button class="add-button" type="button" aria-label="加入日日補水隨行瓶到購物袋">＋</button></div></div>
+          </article>
+          <article class="product" data-name="課表救星週計畫本" data-price="280">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800&q=80" alt="攤開的筆記本與紙筆" loading="lazy"><span class="product-tag">新學期上架</span></div>
+            <div class="product-info"><span class="product-type">PLAN · YOUR WEEK</span><h3>課表救星週計畫本</h3><p class="product-desc">課程、報告、社團行程一次排好，留白也剛剛好。</p><div class="product-bottom"><span class="price">$280<small>原價 $350</small></span><button class="add-button" type="button" aria-label="加入課表救星週計畫本到購物袋">＋</button></div></div>
+          </article>
+          <article class="product" data-name="軟綿綿宿舍收納袋" data-price="360">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80" alt="適合日常收納與攜帶的帆布包" loading="lazy"><span class="product-tag">小空間好收</span></div>
+            <div class="product-info"><span class="product-type">ROOM · ORGANIZE</span><h3>軟綿綿宿舍收納袋</h3><p class="product-desc">把桌面零碎收整齊，換季衣物也有舒服的位置。</p><div class="product-bottom"><span class="price">$360<small>原價 $450</small></span><button class="add-button" type="button" aria-label="加入軟綿綿宿舍收納袋到購物袋">＋</button></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="student-deal" id="deal" aria-labelledby="dealTitle">
+      <div class="deal-band wrap">
+        <div class="deal-copy"><p class="eyebrow">A LITTLE STUDENT PERK</p><h2 id="dealTitle">學生身份，<br>當然要有學生價。</h2><p>輸入專屬折扣碼，讓購物袋裡的好物再便宜一點。買之前先檢查購物袋，折扣會一起算進去。</p></div>
+        <div class="deal-form-wrap">
+          <label for="couponInput">輸入學生折扣碼</label>
+          <form class="deal-form" id="couponForm"><input id="couponInput" type="text" autocomplete="off" placeholder="例如：MA88" aria-label="學生折扣碼"><button type="submit">套用優惠</button></form>
+          <p class="deal-hint">本次活動折扣碼：<strong>MA88</strong>，全單 88 折。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section promise" id="promise" aria-labelledby="promiseTitle">
+      <div class="promise-grid wrap">
+        <div class="promise-art"><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80" alt="桌面上攤開的書本與學習用品" loading="lazy"><span class="promise-stamp">媽媽看過，妳放心。</span></div>
+        <div class="promise-copy"><p class="eyebrow">NO WORRIES, JUST GOOD PICKS</p><h2 id="promiseTitle">每一樣，都先替妳想過。</h2><p>媽妳好不是什麼都賣。我們在意的是價格實在、用途清楚，也經得起每天拿來用。讓學生買得放心，回家也能跟媽媽說：「這次真的有挑過。」</p><ul class="promise-points"><li><span>✓</span>用途清楚，不玩文字遊戲</li><li><span>✓</span>價格標示透明</li><li><span>✓</span>七天鑑賞申請說明清楚</li><li><span>✓</span>客服協助處理訂單問題</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section voices" aria-labelledby="voicesTitle">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">STUDENT NOTES</p><h2 id="voicesTitle">同學用過，<em>有話直說。</em></h2></div><p>從宿舍桌面到每週課表，這些小事變順手就很值得。</p></div>
+        <div class="voice-grid">
+          <figure class="voice"><div class="voice-stars" aria-label="五星評價">★★★★★</div><blockquote>「燈光不刺眼，室友先睡也不怕整間太亮，期中週真的救到我。」</blockquote><figcaption>林同學｜大二・宿舍生活</figcaption></figure>
+          <figure class="voice"><div class="voice-stars" aria-label="五星評價">★★★★★</div><blockquote>「計畫本版面很直覺，打工跟課表終於不會撞在一起，價格也很學生。」</blockquote><figcaption>吳同學｜大三・設計系</figcaption></figure>
+          <figure class="voice"><div class="voice-stars" aria-label="五星評價">★★★★★</div><blockquote>「先把折扣碼用在水瓶和收納袋，寄到宿舍很方便，收到的質感比想像好。」</blockquote><figcaption>陳同學｜大一・新生</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq" aria-labelledby="faqTitle">
+      <div class="faq-layout wrap">
+        <div class="faq-intro"><p class="eyebrow">QUICK ANSWERS</p><h2 id="faqTitle">放心買之前，<br>先問清楚。</h2></div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>折扣碼要怎麼使用？</summary><p>將商品加入購物袋後，在本頁「學生優惠」輸入 MA88 並套用，購物袋金額會以 88 折計算。此頁為前端示範，不會實際收款。</p></details>
+          <details class="faq-item"><summary>可以寄到學校宿舍嗎？</summary><p>結帳前請確認宿舍是否可代收包裹，並填妥校名、宿舍名稱與聯絡方式。本頁為展示頁，沒有連接實際物流服務。</p></details>
+          <details class="faq-item"><summary>收到商品後不合適怎麼辦？</summary><p>商品請保持完整，並於收到後七天內聯絡客服詢問退換流程；實際適用條件仍依商品頁與消費者保護規定辦理。</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-main wrap">
+      <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">妳</span><span><span class="brand-name">媽妳好</span><span class="brand-tag">STUDENT LIFE, MADE EASY</span></span></a><p>專為學生挑選生活好物。價格實在、用途清楚，讓每一筆生活費都花在真正喜歡的地方。</p></div>
+      <div><h3>EXPLORE</h3><ul class="footer-links"><li><a href="#shop">宿舍選物</a></li><li><a href="#deal">學生優惠</a></li><li><a href="#promise">安心保證</a></li></ul></div>
+      <div><h3>HELLO, STUDENT</h3><ul class="footer-links"><li><a href="mailto:hello@maniihao.example">hello@maniihao.example</a></li><li>週一至週五 10:00–18:00</li><li>台灣・為校園日常挑選</li></ul></div>
+    </div>
+    <div class="footer-bottom wrap"><span>© 2026 媽妳好 MA NI HAO</span><span>示範購物頁面｜下單與金流尚未啟用</span></div>
+  </footer>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="drawer-head"><h2 id="cartTitle">我的購物袋</h2><button class="close-button" id="cartClose" type="button" aria-label="關閉購物袋">×</button></div>
+    <div class="cart-items" id="cartItems"><p class="empty-cart">購物袋還空空的，去挑幾件好物吧。</p></div>
+    <div class="drawer-bottom"><div class="total-row"><span>合計 <span id="discountLabel"></span></span><strong id="cartTotal">$0</strong></div><button class="button button-pink" id="checkoutButton" type="button">前往結帳 <span aria-hidden="true">→</span></button></div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const cart = new Map();
+    let couponApplied = false;
+    let toastTimer;
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartOpen = document.getElementById('cartOpen');
+    const overlay = document.getElementById('overlay');
+    const menuButton = document.getElementById('menuButton');
+    const navLinks = document.getElementById('navLinks');
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    function setCartOpen(isOpen) {
+      cartDrawer.classList.toggle('open', isOpen);
+      overlay.classList.toggle('open', isOpen);
+      cartDrawer.setAttribute('aria-hidden', String(!isOpen));
+      cartOpen.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('drawer-open', isOpen);
+      if (isOpen) document.getElementById('cartClose').focus();
+      else cartOpen.focus();
+    }
+
+    function renderCart() {
+      const itemsElement = document.getElementById('cartItems');
+      const entries = [...cart.values()];
+      const count = entries.reduce((sum, item) => sum + item.quantity, 0);
+      const subtotal = entries.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      document.getElementById('cartCount').textContent = count;
+      document.getElementById('discountLabel').textContent = couponApplied ? '（MA88 已折抵）' : '';
+      document.getElementById('cartTotal').textContent = `$${Math.round(subtotal * (couponApplied ? .88 : 1))}`;
+      if (!entries.length) {
+        itemsElement.innerHTML = '<p class="empty-cart">購物袋還空空的，去挑幾件好物吧。</p>';
+        return;
+      }
+      itemsElement.innerHTML = entries.map(item => `
+        <div class="cart-item">
+          <div><b>${item.name}</b><small>$${item.price} ／ 件</small></div>
+          <div class="cart-controls">
+            <button type="button" data-cart-action="minus" data-name="${item.name}" aria-label="減少${item.name}">−</button>
+            <span>${item.quantity}</span>
+            <button type="button" data-cart-action="plus" data-name="${item.name}" aria-label="增加${item.name}">＋</button>
+          </div>
+        </div>`).join('');
+    }
+
+    document.querySelectorAll('.add-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const product = button.closest('.product');
+        const name = product.dataset.name;
+        const item = cart.get(name) || { name, price: Number(product.dataset.price), quantity: 0 };
+        item.quantity += 1;
+        cart.set(name, item);
+        renderCart();
+        showToast(`${name} 已加入購物袋`);
+      });
+    });
+
+    document.getElementById('cartItems').addEventListener('click', event => {
+      const button = event.target.closest('[data-cart-action]');
+      if (!button) return;
+      const item = cart.get(button.dataset.name);
+      if (!item) return;
+      item.quantity += button.dataset.cartAction === 'plus' ? 1 : -1;
+      if (item.quantity <= 0) cart.delete(item.name);
+      renderCart();
+    });
+
+    cartOpen.addEventListener('click', () => setCartOpen(true));
+    document.getElementById('cartClose').addEventListener('click', () => setCartOpen(false));
+    overlay.addEventListener('click', () => setCartOpen(false));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && cartDrawer.classList.contains('open')) setCartOpen(false);
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') setMenuOpen(false);
+    });
+
+    function setMenuOpen(isOpen) {
+      navLinks.classList.toggle('open', isOpen);
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? '關閉導覽選單' : '開啟導覽選單');
+      menuButton.textContent = isOpen ? '×' : '☰';
+    }
+
+    menuButton.addEventListener('click', () => setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
+
+    document.getElementById('couponForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const code = document.getElementById('couponInput').value.trim().toUpperCase();
+      if (code !== 'MA88') {
+        showToast('折扣碼不正確，請確認後再試一次。');
+        return;
+      }
+      couponApplied = true;
+      renderCart();
+      showToast('MA88 已套用，購物袋享 88 折。');
+    });
+
+    document.getElementById('checkoutButton').addEventListener('click', () => {
+      if (cart.size === 0) {
+        showToast('購物袋目前沒有商品，先去逛逛吧。');
+        return;
+      }
+      showToast('這是展示頁，實際結帳功能尚未啟用。');
+    });
+  </script>
+</body>
+</html>
