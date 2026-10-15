@@ -152,6 +152,19 @@
       list-style: none;
     }
 
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: var(--primary-pink);
+      border: 2px solid var(--border-pink);
+      border-radius: 50%;
+      font-size: 1.25rem;
+    }
+
     .nav-links a {
       font-size: 0.96rem;
       font-weight: 700;
@@ -1412,6 +1425,33 @@
       .nav-links {
         display: none;
       }
+      .nav-links.mobile-open {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 12px 20px 18px;
+        background: #ffffff;
+        border-bottom: 2px solid var(--border-pink);
+        box-shadow: var(--shadow-md);
+      }
+      .nav-links a {
+        display: block;
+        padding: 10px 12px;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-actions {
+        gap: 10px;
+      }
+      .btn-student-discount {
+        display: none;
+      }
       .spec-grid {
         grid-template-columns: 1fr;
       }
@@ -1446,7 +1486,7 @@
         </div>
       </a>
 
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#guarantee">🛡️ 不會害你</a></li>
         <li><a href="#products">🔥 學生熱銷</a></li>
         <li><a href="#coupon">🎁 領學生券</a></li>
@@ -1456,6 +1496,9 @@
 
       <div class="nav-actions">
         <a href="#coupon" class="btn-student-discount">🎓 學生專屬福利</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="navLinks">
+          <span aria-hidden="true">☰</span>
+        </button>
         <button class="cart-btn" id="openCartBtn" title="查看購物車">
           🛒
           <span class="cart-counter" id="cartCount">0</span>
@@ -1987,8 +2030,32 @@
     const openCartBtn = document.getElementById('openCartBtn');
     const cartOverlay = document.getElementById('cartOverlay');
     const cartDrawer = document.getElementById('cartDrawer');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
     openCartBtn.addEventListener('click', openCart);
+
+    function setMenuOpen(isOpen) {
+      navLinks.classList.toggle('mobile-open', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? '關閉導覽選單' : '開啟導覽選單');
+      menuToggle.querySelector('span').textContent = isOpen ? '✕' : '☰';
+    }
+
+    menuToggle.addEventListener('click', () => {
+      setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+        setMenuOpen(false);
+        menuToggle.focus();
+      }
+    });
 
     function openCart() {
       cartOverlay.classList.add('open');
